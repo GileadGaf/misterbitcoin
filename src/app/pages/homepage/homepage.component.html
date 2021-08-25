@@ -1,0 +1,14 @@
+<section class="homepage">
+<h2 class="title">Welcome to Mister Bitcoin!</h2>
+<h3>Hi, {{loggedinUser.name}}!</h3>
+<h3 class="bitcoin-balance">Current Balance:
+     BIT
+    <img class="bitcoin-img" src="../../../assets/img/bitcoin.png" alt="">
+   <span class="bitcoin-amount">  {{loggedinUser.coins}}</span>
+    </h3>
+    <h3 >USD {{bitcoinRate |currency}}</h3>
+<section class="move-list-container">
+    <h2 class="title">Your Latest Moves:</h2>
+<app-move-list [moves]="moves" [loggedinUserId]="loggedinUser._id"></app-move-list>
+</section>
+</section>

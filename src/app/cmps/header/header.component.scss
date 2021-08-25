@@ -1,0 +1,33 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #292929;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 20px;
+    .logo{
+        display: flex;
+        gap: 5px;
+        .logo-img{
+            width: 30px;
+        }
+    }
+    nav{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        height: 100%;
+        margin-right: 10px;
+        img{
+            width: 30px;
+        }
+        .link{
+            cursor: pointer;
+            &:hover{
+                color:#fff;
+                text-decoration: underline;
+            }
+        }
+    }
+}

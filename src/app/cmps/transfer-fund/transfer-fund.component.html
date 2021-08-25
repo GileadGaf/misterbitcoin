@@ -1,0 +1,12 @@
+<section class="transfer-fund">
+    <h2 class="title">Transfer money
+        <span *ngIf="contact">
+            to {{contact.name}}
+        </span>
+    </h2>
+    <form #form="ngForm" (ngSubmit)="onTransferCoins()">
+        <input #amount="ngModel" type="number" name="amount" min="0"  [max]="maxCoins"
+        [(ngModel)]="coinsAmount" [input-limit]="maxCoins"   >
+        <button class="btn" [disabled]="!coinsAmount|| coinsAmount>maxCoins">Tranfer</button>
+    </form>
+</section>

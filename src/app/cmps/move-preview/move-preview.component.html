@@ -1,0 +1,12 @@
+<article class="move-preview">
+        <a [routerLink]="['/contact',move.toId]" *ngIf="!contactId|| contactId===move.toId;else recieverSection">
+            <h3 class="title">To: {{move.toName}}</h3>
+        </a>
+        <ng-template #recieverSection>
+            <h3 class="title">From: {{move.fromName}}</h3>
+        </ng-template>
+
+
+    <h3>At {{move.at|date:'medium'}}</h3>
+    <h3>Amount: {{move.amount}} coins</h3>
+</article>

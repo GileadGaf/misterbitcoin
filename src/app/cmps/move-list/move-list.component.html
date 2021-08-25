@@ -1,0 +1,13 @@
+<section >
+    
+    <ul class="move-list" *ngIf="moves.length;else noMoves">
+        
+        <li  *ngFor="let move of sortedMoves">
+          <app-move-preview [move]="move" [contactId]="contact?._id" ></app-move-preview>
+        </li>
+    </ul>  
+    <ng-template #noMoves>
+        <h3 class="no-moves-title">No moves found!</h3>
+    </ng-template>
+      
+</section>

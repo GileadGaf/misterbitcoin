@@ -1,0 +1,22 @@
+<header>
+    <div class="logo">
+        <h2>Mister Bitcoin</h2>
+        <img class="logo-img" src="../../../assets/img/logo.png" alt="">
+    </div>
+    <nav>
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+            <img src="../../../assets/img/home.png" title="Go Home" alt="home">
+        </a>
+        <a routerLink="contact" routerLinkActive="active">
+            <img src="../../../assets/img/contacts.png" title="Go to Contacts" alt="contacts">
+        </a>
+        <a routerLink="statistics" routerLinkActive="active">
+            <img src="../../../assets/img/statistics.png" title="Go to Statistics" alt="statistics">
+        </a>
+        <a routerLink="signup" routerLinkActive="active" *ngIf="!loggedinUser;else logout " >Signup</a>
+        <ng-template #logout>
+            <span class="link" (click)="onLogOut()">Logout</span>
+        </ng-template>
+        
+    </nav>
+</header>

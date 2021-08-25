@@ -1,0 +1,13 @@
+.contact-edit{
+   display: flex;
+   flex-direction: column;
+ .contact-info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+ }
+ .btn-delete{
+    align-self: center;
+ }
+}

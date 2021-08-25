@@ -1,0 +1,35 @@
+.move-list{
+    display: flex;
+    flex-direction: column;
+    max-height: 350px;
+    overflow-y: auto;
+    border: 2px solid #fff;
+    border-left: 2px solid gray;
+    
+    
+    &::-webkit-scrollbar {
+        width: 10px;
+        border-radius: 15px;
+    }
+    
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: gray;
+        border-radius: 15px;
+    }
+    
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: darken(gray,25%);
+        border-radius: 15px;
+      }
+}
+
+.no-moves-title{
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 150px;
+}

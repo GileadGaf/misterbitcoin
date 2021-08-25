@@ -1,0 +1,25 @@
+<section class="signup-login">
+  <h2 class="title">Sign up to Mister Bitcoin</h2>
+  <form #userForm="ngForm">
+    <label for="username">Name</label>
+    <input type="text" id="username" name="username" placeholder="Enter username" required [(ngModel)]="newUser.name"
+      #name="ngModel" />
+    <p class="required" [hidden]="name.valid || name.pristine">Name is required</p>
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" placeholder="Enter email" required [(ngModel)]="newUser.email"
+      #email="ngModel" />
+    <p class="required" [hidden]="email.valid||email.pristine">Email is required</p>
+    <label for="phone">Phone</label>
+    <input type="text" id="phone" name="phone" placeholder="Enter phone" required [(ngModel)]="newUser.phone"
+      #phone="ngModel" />
+    <p class="required" [hidden]="phone.valid||phone.pristine">Phone is required</p>
+    <button class="btn" (click)="onSignup()" [disabled]="!userForm.form.valid">Signup</button>
+  </form>
+  <section class="login">
+    <h2 class="title">Or login instead</h2>
+    <select name="" #userList>
+      <option *ngFor="let user of users$ |async" [value]="user._id">{{user.name}}</option>
+    </select>
+    <button class="btn" (click)="onLogin(userList.value)">Login</button>
+  </section>
+</section>

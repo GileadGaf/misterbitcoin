@@ -1,0 +1,19 @@
+<section class="contact-details">
+   <img class="contact-img" [src]="'https://www.robohash.org/'+contact._id" alt="" />
+   <div class="contact-info">
+      <h2>Name: {{contact.name}}</h2>
+      <h3>Email: {{contact.email}}</h3>
+      <h3>Phone: {{contact.phone}}</h3>
+   </div>
+   <a class="btn-back" [routerLink]="'/'+prevPage" routerLinkActive="active"></a>
+   <section class="transfer-funds-container">
+      <app-transfer-fund [contact]="contact" [maxCoins]="loggedinUser.coins" (onTransferCoins)="transferCoins($event)">
+      </app-transfer-fund>
+   </section>
+
+   <section class="move-list-container">
+      <h2 class="title">Moves between you and {{contact.name}}</h2>
+      <app-move-filter *ngIf="movesFilterTerm || moves?.length" [contactName]="contact.name" (onChangeFilter)="changeFilter($event)" ></app-move-filter>
+      <app-move-list [moves]="moves" [contact]="contact" [loggedinUserId]="loggedinUser._id" ></app-move-list>
+   </section>
+</section>

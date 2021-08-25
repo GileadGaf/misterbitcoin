@@ -1,0 +1,44 @@
+.contact-details {
+  display: grid;
+  grid-template-columns: 300px repeat(3, 1fr);
+  grid-template-rows: 100px repeat(3, minmax(150px,1fr));
+  justify-items: center;
+  background-color: #4141424d;
+  height: 90vh;
+
+  .contact-img {
+    grid-column: 1;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: darken(gray, 30%);
+    transition: background-color 0.4s;
+    margin: 5px;
+    &:hover {
+      background-color: darken(gray, 15%);
+    }
+  }
+  .contact-info {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    // align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    color: #fff;
+    margin-left: 10px;
+  }
+
+  //should be app-transfer-fund-container
+  .transfer-funds-container {
+    grid-row: 3/5;
+  }
+
+  .move-list-container {
+    grid-row: 3/5;
+    >.title {
+      margin-bottom: 10px;
+     
+    }
+  }
+}

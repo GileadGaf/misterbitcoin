@@ -1,0 +1,5 @@
+<section class="contact-filter">
+<h3>Search for contacts</h3>
+<input type="text" placeholder="contact detail"  name="term" [(ngModel)]="term"/>
+<h4 *ngIf="term" ><span class="search-title"> Searching for:</span> {{term|debounce:1000:filter}}</h4>
+</section>

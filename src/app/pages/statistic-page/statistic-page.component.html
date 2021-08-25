@@ -1,0 +1,24 @@
+<section class="statistic">
+    <h2 class="title">Info about market price and daily transactions</h2>
+  <section class="chart">
+  <section class="chart">
+    <h3>Average USD market price across major bitcoin exchanges.</h3>
+    <google-chart *ngIf="marketPrice.data"
+    [title]="marketPrice.title"
+    [type]="type"
+    [data]="marketPrice.data"
+    [width]="marketPrice.width"
+    [height]="marketPrice.height">
+ </google-chart>
+  </section>
+  <section class="chart">
+    <h3>Number of confirmed transactions per day</h3>
+    <google-chart *ngIf="transactionsCount.data"
+    [title]="transactionsCount.title"
+    [type]="type"
+    [data]="transactionsCount.data"
+    [width]="transactionsCount.width"
+    [height]="transactionsCount.height">
+ </google-chart>
+  </section>
+</section>

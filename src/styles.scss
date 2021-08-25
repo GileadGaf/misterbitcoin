@@ -1,0 +1,108 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./app//pages/homepage/homepage.component.scss";
+@import "./app//pages/contact-page/contact-page.component.scss";
+@import "./app//pages/contact-edit/contact-edit.component.scss";
+@import "./app//pages/contact-details/contact-details.component.scss";
+
+//--Base--//
+
+* {
+  box-sizing: border-box;
+  font-family: cursive;
+}
+
+html {
+  line-height: 1.2;
+}
+
+body {
+  background: url(./assets/img/bitcoin-cover.jpg) no-repeat;
+  background-size: cover;
+  background-blend-mode: lighten;
+  color: lighten(gray, 20%);
+  text-align: center;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: lighten(gray, 20%);
+  &:hover:not(.btn) {
+    color: #fff;
+    text-decoration: underline;
+  }
+}
+input,
+select {
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  padding: 5px 13px;
+  background-color: lighten(gray, 15%);
+  color: #fff;
+  &::placeholder {
+    color: lighten(#292929, 15%);
+  }
+}
+button {
+  cursor: pointer;
+  outline: none;
+}
+
+//--Helpers--//
+.title {
+  text-decoration: underline;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.btn {
+  &:not(:disabled) {
+    background-color: darken(gray, 10%);
+  }
+  border: 2px solid;
+  color: #fff;
+  border-radius: 15px;
+  padding: 5px;
+  min-width: max-content;
+  width: 200px;
+  font-size: 1.05rem;
+  margin: 10px;
+  &:not(:disabled):hover {
+    background-color: darken(gray, 20%);
+    border: 2px dotted;
+  }
+  &:disabled {
+    background-color: lighten(gray, 20%);
+    cursor: default;
+  }
+}
+
+.btn-back {
+  position: absolute;
+  top: 70px;
+  left: 350px;
+  width: 50px;
+  height: 50px;
+  background: url(./assets/img/back.png) no-repeat;
+  background-size: cover;
+  &:hover {
+    background: url(./assets/img/back-hover.png) no-repeat;
+    background-size: cover;
+  }
+}

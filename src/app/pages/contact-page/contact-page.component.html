@@ -1,0 +1,5 @@
+<section class="contact-page">
+    <h2 class="title">See our contacts:</h2>
+    <app-contact-filter (onSearch)="searchContact($event)"></app-contact-filter>
+    <app-contact-list *ngIf="users$" [contacts]="users$ | async"></app-contact-list>
+</section>

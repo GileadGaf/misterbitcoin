@@ -1,0 +1,36 @@
+.signup-login {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: max-content;
+  gap: 10px;
+  justify-items: start;
+  background-color: #4141424d;
+  height: 90vh;
+  > * {
+    grid-column: 2;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    label {
+      margin-top: 10px;
+    }
+    input {
+      margin: 5px;
+    }
+    .required {
+      color: red;
+    }
+  }
+
+  .login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    select {
+      width: 90%;
+      margin: 5px;
+    }
+  }
+}

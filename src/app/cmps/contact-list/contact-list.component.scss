@@ -1,0 +1,27 @@
+.contact-list{
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    gap: 15px;
+    height: 600px;
+    width: 600px;
+    overflow-y: auto;
+
+    /* width */
+&::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 15px;
+}
+
+/* Track */
+&::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 15px;
+}
+
+/* Handle */
+&::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 15px;
+  }
+}

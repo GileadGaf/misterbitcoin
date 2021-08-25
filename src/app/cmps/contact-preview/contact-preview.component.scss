@@ -1,0 +1,19 @@
+.contact-preview{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5px;
+    border: 2px solid;
+    border-radius: 15px;
+    margin-right: 10px;
+    background-color: #292929;
+    color:#fff;
+    img{
+        width: 100px;
+    }
+    &:hover{
+        background-color: darken(gray,20%);
+        border: 2px dotted;
+        cursor: pointer;
+    }
+}

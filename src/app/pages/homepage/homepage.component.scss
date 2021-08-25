@@ -1,0 +1,23 @@
+.homepage {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  .bitcoin-balance {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    .bitcoin-amount{
+        color:#bea0a2;
+    }
+    .bitcoin-img {
+      width: 25px;
+    }
+  }
+  .move-list-container {
+    width: 500px;
+    h2{
+      margin-bottom: 10px;
+    }
+  }
+}

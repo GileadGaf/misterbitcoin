@@ -1,0 +1,8 @@
+<section class="move-filter">
+    <h2>Show moves by</h2>
+    <select #moveFilter name="" (change)="onChangeFilter(moveFilter.value)">
+        <option value="">All</option>
+        <option value="to">To {{contactName}}</option>
+        <option value="from">From {{contactName}} </option>
+    </select>
+</section>
