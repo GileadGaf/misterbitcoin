@@ -8,6 +8,6 @@ export class User {
     public phone: string = '',
     public coins: number = 100,
     public moves: Move[] = [],
-    public contacts: User[] = []
+    public password?:String
   ) {}
 }

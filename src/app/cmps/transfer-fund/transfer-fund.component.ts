@@ -12,14 +12,20 @@ export class TransferFundComponent implements OnInit {
   @Output('onTransferCoins') transferCoins = new EventEmitter();
   constructor() {}
   coinsAmount = 0;
+  transferReason = '';
   ngOnInit(): void {
     if (this.maxCoins) this.coinsAmount = 1;
   }
 
   onTransferCoins() {
     if (!this.coinsAmount) return;
-    this.transferCoins.emit(this.coinsAmount);
+    const transfer = {
+      coinsAmount: this.coinsAmount,
+      transferReason:this.transferReason
+  }
+    this.transferCoins.emit(transfer);
     const amountAfterTransaction = this.maxCoins - this.coinsAmount;
+    
     if (this.coinsAmount > amountAfterTransaction) {
       this.coinsAmount = amountAfterTransaction;
     }

@@ -10,28 +10,21 @@ import { BitcoinService } from 'src/app/services/bitcoin.service';
   
   
 export class StatisticPageComponent {
+  chartSize: number;
   constructor(private bitcoinService: BitcoinService) { }
   type = ChartType.Line;
   marketPrice = {
     title: 'Market Price',
-    data:null,
-    width: 500,
-    height:500
+    data: null,
+    height:500,
+    width:500
 }
   transactionsCount = {
     title: 'Trasactions Count',
-    data:null,
-    width: 500,
-    height:500
+    data: null,
+    height: 500,
+    width:500
 }
-//   [
-//     ['Firefox', 45.0],
-//     ['IE', 26.8],
-//     ['Chrome', 12.8],
-//     ['Safari', 8.5],
-//     ['Opera', 6.2],
-//     ['Others', 0.7] 
-//  ];
 
 
   async getDataMarket() {
@@ -46,7 +39,13 @@ const chartData=data.values.map(val=>[new Date(val.x).toLocaleTimeString(),val.y
   }
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    this.chartSize = window.innerWidth / 3;
+
+    this.marketPrice.height = this.chartSize;
+    this.marketPrice.width = this.chartSize;
+    this.transactionsCount.height = this.chartSize;
+    this.transactionsCount.width = this.chartSize;
+    console.log(this.chartSize);
     this.getDataMarket();
     this.getDataTransactions();
     

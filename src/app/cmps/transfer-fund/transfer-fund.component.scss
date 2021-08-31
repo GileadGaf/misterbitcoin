@@ -1,8 +1,14 @@
-.transfer-fund{
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    .title{
-margin-bottom: 10px;
-    }
+.transfer-fund {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .title {
+    margin-bottom: 10px;
+  }
+  textarea[name=reason]{
+      max-width: 200px;
+      min-width: 200px;
+      max-height: 330px;
+      min-height: 100px;
+  }
 }

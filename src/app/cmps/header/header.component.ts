@@ -14,11 +14,11 @@ export class HeaderComponent implements OnInit {
   }
 
   get loggedinUser() {
-    return this.userService.getLoggedinUser();
+    return this.userService.loggedinUser;
   }
 
-  onLogOut() {
-    this.userService.logout();
+ async onLogOut() {
+    await this.userService.logout();
     this.router.navigate(['signup']);
   }
 

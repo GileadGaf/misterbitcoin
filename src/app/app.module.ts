@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { GoogleChartsModule } from 'angular-google-charts';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactListComponent } from './cmps/contact-list/contact-list.component';
@@ -21,6 +21,9 @@ import { MoveListComponent } from './cmps/move-list/move-list.component';
 import { InputLimitDirective } from './directive/input-limit.directive';
 import { MovePreviewComponent } from './cmps/move-preview/move-preview.component';
 import { MoveFilterComponent } from './cmps/move-filter/move-filter.component';
+import { UserMessageComponent } from './cmps/user-message/user-message.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SinglePlurPipe } from './pipes/single-plur.pipe';
 
 @NgModule({
   declarations: [
@@ -40,16 +43,20 @@ import { MoveFilterComponent } from './cmps/move-filter/move-filter.component';
     MoveListComponent,
     InputLimitDirective,
     MovePreviewComponent,
-    MoveFilterComponent
+    MoveFilterComponent,
+    UserMessageComponent,
+    SinglePlurPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     GoogleChartsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [SinglePlurPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

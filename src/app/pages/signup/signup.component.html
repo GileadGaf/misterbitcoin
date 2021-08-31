@@ -18,7 +18,7 @@
   <section class="login">
     <h2 class="title">Or login instead</h2>
     <select name="" #userList>
-      <option *ngFor="let user of users$ |async" [value]="user._id">{{user.name}}</option>
+      <option *ngFor="let user of users$ |async" [value]="user.email">{{user.name}}</option>
     </select>
     <button class="btn" (click)="onLogin(userList.value)">Login</button>
   </section>

@@ -20,7 +20,7 @@ export class SelfTransferGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Promise<boolean> {
-    this.loggedinUser = this.userService.getLoggedinUser();
+    this.loggedinUser = this.userService.loggedinUser;
     const { id } = route.params;
     this.contact = await this.userService.getUserById(id).toPromise();
     const isSameUser = this.contact?._id === this.loggedinUser._id;

@@ -28,13 +28,13 @@ export class SignupComponent implements OnInit {
   async onSignup() {
     const { name, email, phone } = this.newUser;
     if (!name || !email || !phone) return;
-    const user = await this.userService.saveUser(this.newUser).toPromise();
-    this.userService.signup(user);
+    this.newUser.password = '12345';
+    const user = await this.userService.signup(this.newUser);
     this.router.navigate(['/']);
   }
-  onLogin(userId) {
-    console.log(userId);
-    this.userService.login(userId);
+ async onLogin(email) {
+    const password = '12345';
+    await this.userService.login(email,password);
     this.router.navigate(['/']);
   }
 }

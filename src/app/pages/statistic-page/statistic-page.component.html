@@ -1,6 +1,6 @@
 <section class="statistic">
     <h2 class="title">Info about market price and daily transactions</h2>
-  <section class="chart">
+ <section class="charts-container" [ngClass]="{'flex-dir-column':chartSize<400}">
   <section class="chart">
     <h3>Average USD market price across major bitcoin exchanges.</h3>
     <google-chart *ngIf="marketPrice.data"
@@ -21,4 +21,5 @@
     [height]="transactionsCount.height">
  </google-chart>
   </section>
+ </section>
 </section>
