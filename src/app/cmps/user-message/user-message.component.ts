@@ -44,7 +44,6 @@ export class UserMessageComponent implements OnInit {
       //When the component is first loaded
       if (msg) {
         clearTimeout(this.timeOutId)
-        console.log(msg);
         this.isMsgShown = true;
       }
       this.hideMsgTimeout();

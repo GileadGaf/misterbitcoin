@@ -1,8 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-// @import "./app//pages/homepage/homepage.component.scss";
-// @import "./app//pages/contact-page/contact-page.component.scss";
-// @import "./app//pages/contact-edit/contact-edit.component.scss";
-// @import "./app//pages/contact-details/contact-details.component.scss";
+@import '../styles/breakpoints';
 
 //--Base--//
 
@@ -99,10 +95,10 @@ button {
   left: 350px;
   width: 50px;
   height: 50px;
-  background: url(./assets/img/back.png) no-repeat;
+  background: url(../assets/img/back.png) no-repeat;
   background-size: cover;
   &:hover {
-    background: url(./assets/img/back-hover.png) no-repeat;
+    background: url(../assets/img/back-hover.png) no-repeat;
     background-size: cover;
   }
 }
@@ -117,23 +113,3 @@ button {
 //500px-Hamburger
 
 
-// LAYOUT BREAKPOINTS
-$break-large: 900px;
-$break-small:600px;
-$break-mobile:500px;
-
-@mixin for-large-layout {
-    @media (max-width: $break-large) {
-      @content;
-    }
-  }
-@mixin for-small-layout {
-    @media (max-width: $break-small) {
-      @content;
-    }
-  }
-@mixin for-mobile-layout {
-    @media (max-width: $break-mobile) {
-      @content;
-    }
-  }

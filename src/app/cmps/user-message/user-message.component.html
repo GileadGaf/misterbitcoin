@@ -1,4 +1,4 @@
-<section class="user-msg" [@openClose]="isMsgShown ? 'open' : 'closed'" >
+<section class="user-msg" [@openClose]="isMsgShown ? 'open' : 'closed'" [ngClass]="message?.type" >
     <h2>{{message?.title}}</h2>
     <p>{{message?.message}}</p>
 </section>

@@ -1,12 +1,18 @@
-.user-msg{
-    border: 2px solid  ;
-    border-radius: 2rem;
-    color:lightgreen;
-    background-color: #292929;
-    max-width: max-content;
-   position: fixed;
-   top: 10px;
-   left: 40%;
-   transform: translateX(-50%);
-    padding: 10px;
+.user-msg {
+  border: 2px solid;
+  border-radius: 2rem;
+  background-color: #292929;
+  max-width: max-content;
+  position: fixed;
+  top: 10px;
+  left: 40%;
+  transform: translateX(-50%);
+  padding: 10px;
+  z-index: 10;
+  &.success{
+    color: lightgreen;
+  }
+  &.error{
+    color:red;
+  }
 }

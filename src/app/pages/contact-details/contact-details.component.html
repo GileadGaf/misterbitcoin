@@ -2,8 +2,8 @@
    <img class="contact-img" [src]="'https://www.robohash.org/'+contact._id" alt="" />
    <div class="contact-info">
       <h2>Name: {{contact.name}}</h2>
-      <h3>Email: {{contact.email}}</h3>
-      <h3>Phone: {{contact.phone}}</h3>
+      <h4 class="email">Email: {{contact.email}}</h4>
+      <h4 class="phone">Phone: {{contact.phone}}</h4>
    </div>
    <a class="btn-back" [routerLink]="'/'+prevPage" routerLinkActive="active"></a>
    <section class="transfer-funds-container">

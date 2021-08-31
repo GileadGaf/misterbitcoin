@@ -5,11 +5,11 @@
         </span>
     </h2>
     <form #form="ngForm" (ngSubmit)="onTransferCoins();reason.reset()">
-        <input #amount="ngModel" type="number" name="amount" min="0"  [max]="maxCoins"
-        [(ngModel)]="coinsAmount" [input-limit]="maxCoins">
-        <textarea #reason="ngModel" name="reason"  cols="20" rows="10" placeholder="Reason for the transfer" [(ngModel)]="transferReason">
-
+        <input #amount="ngModel" type="number" name="amount" min="0" [max]="maxCoins" [(ngModel)]="coinsAmount"
+            [input-limit]="maxCoins">
+        <textarea #reason="ngModel" name="reason" cols="20" rows="10" placeholder="Reason for the transfer"
+            [(ngModel)]="transferReason">
         </textarea>
-        <button class="btn" [disabled]="!coinsAmount|| coinsAmount>maxCoins">Tranfer</button>
+        <button class="btn btn-transfer" [disabled]="!coinsAmount|| coinsAmount>maxCoins">Tranfer</button>
     </form>
 </section>

@@ -3,7 +3,7 @@
         <h2>Mister Bitcoin</h2>
         <img class="logo-img" src="../../../assets/img/logo.png" alt="">
     </div>
-    <nav>
+    <nav [ngClass]="{'menu-open':isMenuOpen}" >
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
             <img src="../../../assets/img/home.png" title="Go Home" alt="home">
         </a>
@@ -17,6 +17,7 @@
         <ng-template #logout>
             <span class="link" (click)="onLogOut()">Logout</span>
         </ng-template>
-        <img class="burger" src="../../../assets/img/hamburger.svg" alt="hamburger">
     </nav>
+    <img class="burger" (click)="toggleMenu()"
+    src="../../../assets/img/hamburger.svg" alt="hamburger">
 </header>

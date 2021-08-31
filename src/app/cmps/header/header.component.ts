@@ -7,7 +7,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  isMenuOpen = false;
   constructor(private userService:UserService,private router:Router) { }
 
   ngOnInit(): void {
@@ -20,6 +20,10 @@ export class HeaderComponent implements OnInit {
  async onLogOut() {
     await this.userService.logout();
     this.router.navigate(['signup']);
-  }
+ }
+  
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+ }
 
 }

@@ -1,14 +1,27 @@
 .transfer-fund {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  align-items: center;
+  margin: 10px;
   .title {
     margin-bottom: 10px;
+    
   }
-  textarea[name=reason]{
+  form {
+    display: flex;
+    flex-direction: column;
+  
+    input[name="amount"] {
+      width: 200px;
+    }
+    textarea[name="reason"] {
       max-width: 200px;
       min-width: 200px;
       max-height: 330px;
       min-height: 100px;
+    }
+    .btn-transfer{
+      margin: 10px 0;
+    }
   }
 }

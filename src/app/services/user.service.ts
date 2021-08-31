@@ -179,12 +179,12 @@ export class UserService {
   private apiUrl = '//localhost:3030/api/';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    withCredentials:true
+    withCredentials: true,
   };
   constructor(
     private socketService: SocketService,
     private msgService: MessageService,
-    private singlePlurPipe:SinglePlurPipe,
+    private singlePlurPipe: SinglePlurPipe,
     private http: HttpClient
   ) {}
 
@@ -194,72 +194,130 @@ export class UserService {
       params = params.append('term', filterBy.term);
     }
     let url = this.apiUrl + 'user';
-    let users = await this.http.get<User[]>(url,{params,withCredentials:true}).toPromise();
-    const loggedinUser = this.loggedinUser;
-    if (loggedinUser) {
-      users = users.filter(user => user._id !== loggedinUser._id);
+    try {
+      let users = await this.http
+        .get<User[]>(url, { params, withCredentials: true })
+        .toPromise();
+      const loggedinUser = this.loggedinUser;
+      if (loggedinUser) {
+        users = users.filter((user) => user._id !== loggedinUser._id);
+      }
+
+      this._users$.next(users);
+    } catch (err) {
+      console.log('There was an error loading the users', err);
+      const errMessage = new Message(
+        'We had error loading the users',
+        'Please try again later!',
+        'error'
+      );
+      this.msgService.addMsg(errMessage);
     }
-    
-    this._users$.next(users);
   }
 
   public getUserById(id: string): Observable<User> {
     const url = this.apiUrl + 'user/' + id;
-    const user = this.http.get<User>(url);
-    //return an observable
-    return user
-      ? user
-      : Observable.throw(`Contact id ${id} not found!`);
+    try {
+      const user = this.http.get<User>(url);
+      //return an observable
+      if (user) return user;
+    } catch (err) {
+      console.log('Failed to get user', err);
+      const message = new Message(
+        'Failed to get user',
+        'Please try again later!',
+        'error'
+      );
+      this.msgService.addMsg(message);
+    }
+    return Observable.throw(`Contact id ${id} not found!`);
   }
-
-
 
   public getEmptyUser(): User {
     return new User();
   }
 
-  public get loggedinUser():User {
-    return JSON.parse(sessionStorage.getItem(CURR_USER)||'null');
+  public get loggedinUser(): User {
+    return JSON.parse(sessionStorage.getItem(CURR_USER) || 'null');
   }
 
   public async signup(user: User) {
     const url = this.apiUrl + 'auth/signup';
-    const newUser = await this.http.post<User>(url, user,this.httpOptions).toPromise();
-    this._updateLoggedinUser(newUser);
-  this.socketService.emit('set-user-socket', newUser._id);
+    try {
+      const newUser = await this.http
+        .post<User>(url, user, this.httpOptions)
+        .toPromise();
+      this._updateLoggedinUser(newUser);
+      this.socketService.emit('set-user-socket', newUser._id);
+    } catch (err) {
+      console.log('There was an error with the sign up', err);
+      const message = new Message(
+        'There was an error with the signup',
+        'Please try again!',
+        'error'
+      );
+      this.msgService.addMsg(message);
+    }
   }
 
   public async login(email, password) {
     const url = this.apiUrl + 'auth/login';
-    const user = await this.http.post<User>(url, { email, password }, this.httpOptions).toPromise();
-    this._updateLoggedinUser(user);
-    this.socketService.emit('set-user-socket', user._id);
+    try {
+      const user = await this.http
+        .post<User>(url, { email, password }, this.httpOptions)
+        .toPromise();
+      this._updateLoggedinUser(user);
+      this.socketService.emit('set-user-socket', user._id);
+    } catch (err) {
+      console.log('There was an error with the login', err);
+      const errMessage = new Message(
+        'Failed to log in',
+        'Please make sure your username and password are correct!',
+        'error'
+      );
+      this.msgService.addMsg(errMessage);
+    }
   }
 
   public async logout() {
     const url = this.apiUrl + 'auth/logout';
-     await this.http.post<User>(url, null,this.httpOptions).toPromise();
+    await this.http.post<User>(url, null, this.httpOptions).toPromise();
     this._updateLoggedinUser(null);
     this.socketService.emit('set-user-socket', null);
   }
 
   public async addNewMove(move: Move) {
     let loggedinUser = this.loggedinUser;
+    let message;
+    let msgTitle;
+    let msgDesc;
+    let msgType;
     const url = this.apiUrl + 'user/' + loggedinUser._id;
-    loggedinUser = await this.http.put<User>(url, move, this.httpOptions).toPromise();
-    // const contact = await this.getUserById(move.toId).toPromise();
-    // if (!loggedinUser || !contact) return;
-    // if (loggedinUser.coins >= move.amount) {
-    //   loggedinUser.moves.push(move);
-    //   loggedinUser.coins -= move.amount;
-    //   contact.coins += move.amount;
+    try {
+      loggedinUser = await this.http
+        .put<User>(url, move, this.httpOptions)
+        .toPromise();
       this._updateLoggedinUser(loggedinUser);
-      // this.saveUser(loggedinUser);
-      // this.saveUser(contact);
-        const message = new Message(`You have sent ${move.amount} ${this.singlePlurPipe.transform(move.amount,'coin')} to ${move.toName}`);
-        this.msgService.addMsg(message);
-      return loggedinUser;
-    // }
+       msgTitle = `You have sent ${
+        move.amount
+      } ${this.singlePlurPipe.transform(move.amount, 'coin')} to ${
+        move.toName
+         }`;
+      msgType = 'success';
+
+    } catch (err) {
+      console.log('We hadd an error adding the move', err);
+      msgTitle = 'We had an error transfering the coins';
+      msgDesc = 'Please try again later!';
+      msgType = 'error';
+      
+    }
+    finally{
+      const message = new Message(msgTitle,msgDesc,msgType);
+      this.msgService.addMsg(message);
+    }
+
+    return loggedinUser;
   }
 
   private _sort(users: User[]): User[] {
